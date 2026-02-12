@@ -1,0 +1,240 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --fondo: rgb(245, 190, 200);
+  --fondo-main: rgb(191, 92, 163);
+  --letra-titulo: rgb(220, 13, 103);
+  --letra-texto: rgb(241, 237, 242);
+}
+
+body {
+  background-color: var(--fondo);
+  font-family: sans-serif;
+}
+
+/* HEADER */
+.header {
+  padding: 15px;
+  text-align: center;
+  color: var(--letra-titulo);
+}
+
+/* TEXTO */
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.box__text {
+  background: var(--fondo-main);
+  color: var(--letra-texto);
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 900px;
+}
+
+/* IMÁGENES */
+.box__imagenes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.img__content {
+  background: var(--fondo-main);
+  padding: 15px;
+  border-radius: 16px;
+  text-align: center;
+  color: var(--letra-texto);
+}
+
+/* Imágenes responsive */
+.img__content img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border-bottom: 2px solid var(--fondo);
+}
+
+.img__content,
+.box__text {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img__content:hover,
+.box__text:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.30),
+    0 0 22px rgba(247, 9, 195, 0.822);
+}
+
+/* ===== PERSONALIZAR DETAILS ===== */
+
+/* Quitar flecha por defecto */
+summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Corazón brillante */
+summary::after {
+  content: "💞";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background: rgba(255,170,220,0.3);
+  box-shadow: 0 0 10px rgba(255,170,220,0.6);
+  transition: transform 0.3s ease;
+}
+
+/* Animación al abrir */
+details[open] summary::after {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* ===== BRILLO FIJO EN TEXTOS ===== */
+p,
+summary {
+  text-shadow: 0 0 6px currentColor;
+}
+
+/* ===== ANIMACIÓN SOLO EN EL TÍTULO ===== */
+@keyframes brilloTitulo {
+  0% {
+    text-shadow: 0 0 4px currentColor;
+    opacity: 0.9;
+  }
+  50% {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor;
+    opacity: 1;
+  }
+  100% {
+    text-shadow: 0 0 4px currentColor;
+    opacity: 0.9;
+  }
+}
+
+h1 {
+  animation: brilloTitulo 2.5s ease-in-out infinite;
+}
+
+/* ===== FOOTER ROMÁNTICO ===== */
+
+.footer {
+  background: var(--fondo-main);
+  color: var(--letra-texto);
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 30px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+
+  /* misma sombra suave que el resto */
+  box-shadow:
+    0 -10px 25px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(255, 170, 220, 0.25);
+}
+
+/* brillo en las letras del footer */
+.footer p {
+  margin: 6px 0;
+  text-shadow: 0 0 6px currentColor;
+}
+
+body {
+  user-select: none;
+}
+
+/* tamaño un poco más pequeño en celular */
+@media (max-width: 600px) {
+  .footer {
+    padding: 15px 8px;
+    font-size: 14px;
+  }
+}
+
+/* ===== CELULARES ===== */
+@media (max-width: 600px) {
+
+  .box__text {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+}
+
+/* ===== PANTALLA DE BLOQUEO ===== */
+#pantalla-bloqueo {
+  position: fixed;
+  inset: 0;
+  background: var(--fondo);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  z-index: 999;
+}
+
+/* Texto con brillo */
+#pantalla-bloqueo h2,
+#pantalla-bloqueo p {
+  color: var(--letra-titulo);
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* Input */
+#clave {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Botón */
+#pantalla-bloqueo button {
+  background: var(--fondo-main);
+  color: var(--letra-texto);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(191, 92, 163, 0.5);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+#pantalla-bloqueo button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(191, 92, 163, 0.7);
+}
+
+/* Error */
+#error {
+  color: crimson;
+  font-size: 14px;
+}
